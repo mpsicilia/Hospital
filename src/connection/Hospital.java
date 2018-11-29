@@ -34,7 +34,7 @@ public class Hospital {
 
     public static void main(String args[]) throws IOException {
         //Create a server that is waiting in port 9000
-        ServerSocket serverSocket = new ServerSocket(9001);
+        ServerSocket serverSocket = new ServerSocket(62000);
 
         //Thread that is always there waiting if the server wants to finish
         new Thread(new StopThread(serverSocket)).start();
@@ -135,8 +135,8 @@ public class Hospital {
                 if (!catched) {
                     Patient patient = (Patient) objectRead;
                     //Inform the hospital when patients introduce new data
-                    System.out.println("Patient " + patient.getName() + " "
-                            + patient.getSurname() + " has introduced a new monitoring.");
+                    System.out.println("Patient " + patient.getUsername() 
+                           + " has introduced a new monitoring.");
 
                     //Cheking if the folder of the patient already exists, if not we create it
                     //Each patient has a folder
@@ -159,9 +159,9 @@ public class Hospital {
                     fileOut.close();
 
                     //Following lines to see if the object has been properly writen in the file
-                    ObjectInputStream input = new ObjectInputStream(new FileInputStream(path + "/ss_" + patient.getMonitoring().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
+                    /*ObjectInputStream input = new ObjectInputStream(new FileInputStream(path + "/ss_" + patient.getMonitoring().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))));
                     Patient patient2 = (Patient) input.readObject();
-                    System.out.println(patient2);
+                    System.out.println(patient2);*/
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Hospital.class.getName()).log(Level.SEVERE, null, ex);
