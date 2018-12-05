@@ -33,7 +33,7 @@ import patient.Patient;
 public class Hospital {
 
     public static void main(String args[]) throws IOException {
-        //Create a server that is waiting in port 9000
+        //Create a server that is waiting in port 62000
         ServerSocket serverSocket = new ServerSocket(62000);
 
         //Thread that is always there waiting if the server wants to finish
