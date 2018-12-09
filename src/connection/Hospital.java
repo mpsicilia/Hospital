@@ -11,6 +11,7 @@ package connection;
  */
 //import static connection.SendPatient.frame;
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -125,7 +126,7 @@ public class Hospital {
                     //Getting the objects the clients send through the socket
                     objectRead = objectInputStream.readObject();
 
-                } catch (SocketException ex) {
+                } catch (EOFException ex) {
                     System.out.println("Patient disconnected. \n"
                             + "It was not possible to get the data.");
                     releaseResourcesClient(inputStream, socket);
